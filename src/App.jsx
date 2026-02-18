@@ -9,6 +9,8 @@ import Products from "./Products";
 import ProductView from "./ProductView";
 import Contact from "./Contact";
 import About from "./About";
+import Cart from "./Cart";
+
 function App() {
   return (
     <Router>
@@ -20,8 +22,10 @@ function App() {
         <Route path="/products/:id" element={<ProductView />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
-      </Routes>
+        <Route path="/cart" element={<Cart />} />
 
+      </Routes>
+     
       <Footer />
     </Router>
   );

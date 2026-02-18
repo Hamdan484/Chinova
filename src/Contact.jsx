@@ -94,7 +94,7 @@ export default function Example() {
                   id="phone-number"
                   name="phone-number"
                   type="text"
-                  placeholder="123-456-7890"
+                  placeholder="+233-456-7890"
                   className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
                 />
               </div>

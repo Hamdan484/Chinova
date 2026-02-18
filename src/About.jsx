@@ -1,6 +1,8 @@
 import React from "react";
-
+import {Link} from "react-router-dom";
+import Homepage from "./Homepage";
 function About() {
+  
   return (
     <div className="bg-[#fdfaf6] py-16 px-6">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-10 space-y-10">
@@ -32,7 +34,7 @@ function About() {
             work, laugh, and unwind — one cup at a time.
           </p>
           <p className="text-gray-700 font-medium">
-            We don’t just serve coffee. We serve experiences.
+            We don't just serve coffee. We serve experiences.
           </p>
         </section>
 
@@ -90,7 +92,7 @@ function About() {
           </ul>
 
           <p className="text-gray-700 font-medium text-center mt-6">
-            There’s always a seat waiting for you.
+            There's always a seat waiting for you.
           </p>
         </section>
 
@@ -100,7 +102,7 @@ function About() {
             At Chinova, every cup tells a story.
           </p>
           <button className="bg-gray-800 text-white px-6 py-3 rounded-full hover:bg-gray-700 transition">
-            Visit Us Today ☕
+           <Link to="/"> Visit Us Today ☕</Link>
           </button>
         </div>
 

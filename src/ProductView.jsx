@@ -1,9 +1,17 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { CartContext } from "./Context/CartContext.jsx";
 
 export default function ProductView() {
-  const { id } = useParams(); // ✅ get product id from URL
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
+
+  function handleAddToCart() {
+    addToCart(product);
+    navigate("/cart");
+  }
 
   useEffect(() => {
     fetch("/A_products.json")
@@ -27,13 +35,13 @@ export default function ProductView() {
   return (
     <div className="bg-[#fdfaf6] py-16 px-6">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 bg-white shadow-xl rounded-2xl p-10">
-
+        
         {/* Product Image */}
         <div>
           <img
             src={product.imageSrc}
             alt={product.imageAlt}
-            className="w-full h-[400px] object-cover rounded-xl"
+            className="w-full h-100 object-cover rounded-xl"
           />
         </div>
 
@@ -56,17 +64,23 @@ export default function ProductView() {
 
           {/* Purchase Section */}
           <div className="space-y-4 mt-8">
-            <button className="w-full bg-gray-900 text-white py-3 rounded-full hover:bg-gray-800 transition">
+            <button
+              onClick={handleAddToCart}
+              className="w-full bg-gray-900 text-white py-3 rounded-full hover:bg-gray-800 transition"
+            >
               Add to Cart ☕
             </button>
 
             <a
-              href={`https://wa.me/233000000000?text=Hello%20I%20want%20to%20order%20${product.name}`}
+              href={`https://wa.me/233597788861?text=Hello%20I%20want%20to%20order%20${product.name}`}
               target="_blank"
               rel="noopener noreferrer"
               className="block text-center w-full border border-gray-900 text-gray-900 py-3 rounded-full hover:bg-gray-900 hover:text-white transition"
             >
-              Chat to Order on WhatsApp 💬
+              Chat to Order on WhatsApp{" "}
+              <span className="text-green-500">
+                <ion-icon name="logo-whatsapp"></ion-icon>
+              </span>
             </a>
           </div>
         </div>

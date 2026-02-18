@@ -64,8 +64,7 @@ function Footer() {
           {/* Social Icons */}
           <div className="flex space-x-4 mt-4">
             <span className="hover:text-white cursor-pointer">🌐</span>
-            <span className="hover:text-white cursor-pointer">📸</span>
-            <span className="hover:text-white cursor-pointer">🐦</span>
+            
           </div>
         </div>
       </div>

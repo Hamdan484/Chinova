@@ -6,9 +6,11 @@ import { NavLink } from "react-router-dom"; // ✅ use NavLink for active stylin
 
 const navigation = [
   { name: "Home", to: "/" },
-  { name: "Menu", to: "/products" },     // ✅ lowercase
+  { name: "Menu", to: "/products" },     
   { name: "About", to: "/about" },
   { name: "Contact", to: "/contact" },
+  { name: "Cart", to: "/Cart" },
+
 ];
 
 function classNames(...classes) {
