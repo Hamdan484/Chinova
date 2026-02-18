@@ -13,7 +13,7 @@ import Cart from "./Cart";
 
 function App() {
   return (
-    <Router>
+    <Router basename="Chinova">
       <Navbar />
 
       <Routes>

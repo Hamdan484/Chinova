@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-
+import data from "./data.jsx";
 
 export default function Example() {
-  {/*available products from the json file*/}
-  const [avProducts, setAvProducts] = useState([]);
-  useEffect(() => {
-    fetch("/A_products.json")
+  {
+    /*available products from the json file*/
+  }
+  const [avProducts, setAvProducts] = useState(data);
+
+  {
+    /*useEffect(() => {
+    fetch("public/A_products.json")
       .then((response) => response.json())
       .then((data) => {
         setAvProducts(data);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
-      }); 
-      
-  }, []);
-  
+      });
+  }, []);*/
+  }
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">

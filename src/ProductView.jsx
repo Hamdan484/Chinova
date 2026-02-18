@@ -1,28 +1,24 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { CartContext } from "./Context/CartContext.jsx";
-
+import data from "./data.jsx";
 export default function ProductView() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
-
+const [avProducts, setAvProducts] = useState(data);
   function handleAddToCart() {
     addToCart(product);
     navigate("/cart");
   }
 
   useEffect(() => {
-    fetch("/A_products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const foundProduct = data.find(
-          (item) => item.id.toString() === id
+    const foundProduct = avProducts.find(
+      (item) => item.id.toString() === id
         );
-        setProduct(foundProduct);
-      });
-  }, [id]);
+    setProduct(foundProduct);
+  }, [id, avProducts]);
 
   if (!product) {
     return (
