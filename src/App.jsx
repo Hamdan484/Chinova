@@ -16,6 +16,8 @@ function App() {
     <Router basename="Chinova">
       <Navbar />
 
+
+      
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<Products />} />

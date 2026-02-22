@@ -45,8 +45,12 @@ const [avProducts, setAvProducts] = useState(data);
         <div className="flex flex-col justify-between space-y-6">
           <div>
             <h1 className="text-4xl font-bold text-gray-800">
-              {product.name}
+              {product.name} 
             </h1>
+            <br />
+            <h3 className="text-lg font-semibold text-gray-700">Caffeine Level:  {product.caffeine}</h3>
+            <br />
+            <h3 className="text-lg font-semibold text-gray-700">Type:  {product.type}</h3>
 
             <p className="text-2xl text-gray-700 mt-3">
               {product.price}
