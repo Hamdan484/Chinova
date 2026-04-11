@@ -1,19 +1,49 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import data from "./data.jsx";
 
 export default function Example() {
-  const [avProducts, setAvProducts] = useState(data);
-  const hotCoffee = avProducts.filter((product) => product.type === "Hot");
-  const icedCoffee = avProducts.filter((product) => product.type === "Iced");
+  const [avProducts, setAvProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products')
+      .then(res => res.json())
+      .then(data => {
+        setAvProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching products:', err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="text-center py-20 animate-pulse">Wait a moment, we're brewing your coffee menu...</div>;
+
+  if (avProducts.length === 0) {
+    return (
+      <div className="text-center py-20 bg-gray-50 m-10 rounded-2xl border-2 border-dashed">
+        <h2 className="text-2xl font-bold text-gray-900">Oops! Our Menu is Empty</h2>
+        <p className="mt-2 text-gray-600">Please make sure the Backend Server is running and the database is seeded.</p>
+        <div className="mt-6 flex flex-col gap-2 items-center text-sm text-gray-500">
+          <p>1. Open terminal -> <code>cd server</code></p>
+          <p>2. Run <code>node seed.js</code> (once)</p>
+          <p>3. Run <code>npm run dev</code></p>
+        </div>
+      </div>
+    );
+  }
+
+  const hotCoffee = avProducts.filter((product) => product.product_type === "Hot");
+  const icedCoffee = avProducts.filter((product) => product.product_type === "Iced");
   const highCaffeine = avProducts.filter(
-    (product) => product.caffeine === "High",
+    (product) => product.caffeine_level === "High",
   );
   const mediumCaffeine = avProducts.filter(
-    (product) => product.caffeine === "Medium",
+    (product) => product.caffeine_level === "Medium",
   );
   const lowCaffeine = avProducts.filter(
-    (product) => product.caffeine === "Low",
+    (product) => product.caffeine_level === "Low",
   );
 
   return (
@@ -38,7 +68,7 @@ export default function Example() {
                   />
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-sm text-gray-700 font-semibold">
                         <Link to={`/products/${product.id}`}>
                           <span
                             aria-hidden="true"
@@ -47,8 +77,8 @@ export default function Example() {
                           {product.name}
                         </Link>
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {product.color}
+                      <p className="mt-1 text-sm text-gray-500 italic">
+                        {product.caffeine_level} Caffeine
                       </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
@@ -73,7 +103,7 @@ export default function Example() {
                   />
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-sm text-gray-700 font-semibold">
                         <Link to={`/products/${product.id}`}>
                           <span
                             aria-hidden="true"
@@ -82,8 +112,8 @@ export default function Example() {
                           {product.name}
                         </Link>
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {product.color}
+                      <p className="mt-1 text-sm text-gray-500 italic">
+                        {product.caffeine_level} Caffeine
                       </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
@@ -108,7 +138,7 @@ export default function Example() {
                   />
                   <div className="mt-4 flex justify-between">
                     <div>
-                      <h3 className="text-sm text-gray-700">
+                      <h3 className="text-sm text-gray-700 font-semibold">
                         <Link to={`/products/${product.id}`}>
                           <span
                             aria-hidden="true"
@@ -117,8 +147,8 @@ export default function Example() {
                           {product.name}
                         </Link>
                       </h3>
-                      <p className="mt-1 text-sm text-gray-500">
-                        {product.color}
+                      <p className="mt-1 text-sm text-gray-500 italic">
+                        {product.product_type}
                       </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">

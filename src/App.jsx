@@ -10,13 +10,13 @@ import ProductView from "./ProductView";
 import Contact from "./Contact";
 import About from "./About";
 import Cart from "./Cart";
+import Login from "./Login";
+import Signup from "./Signup";
 
 function App() {
   return (
     <Router basename="Chinova">
       <Navbar />
-
-
       
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -25,7 +25,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
-
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
      
       <Footer />

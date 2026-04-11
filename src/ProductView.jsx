@@ -1,29 +1,47 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { CartContext } from "./Context/CartContext.jsx";
-import data from "./data.jsx";
+
 export default function ProductView() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
-const [avProducts, setAvProducts] = useState(data);
-  function handleAddToCart() {
-    addToCart(product);
-    navigate("/cart");
-  }
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+      navigate("/cart");
+    }
+  };
 
   useEffect(() => {
-    const foundProduct = avProducts.find(
-      (item) => item.id.toString() === id
-        );
-    setProduct(foundProduct);
-  }, [id, avProducts]);
+    fetch(`http://localhost:5000/api/products/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        setProduct(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching product:', err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-gray-500 text-lg">Brewing details for you...</p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
       <div className="text-center py-20">
-        <p className="text-gray-500 text-lg">Loading product...</p>
+        <h2 className="text-2xl font-bold">Product not found</h2>
+        <button onClick={() => navigate('/products')} className="mt-4 text-blue-600 underline">Back to Menu</button>
       </div>
     );
   }
@@ -48,9 +66,9 @@ const [avProducts, setAvProducts] = useState(data);
               {product.name} 
             </h1>
             <br />
-            <h3 className="text-lg font-semibold text-gray-700">Caffeine Level:  {product.caffeine}</h3>
+            <h3 className="text-lg font-semibold text-gray-700">Caffeine Level:  {product.caffeine_level}</h3>
             <br />
-            <h3 className="text-lg font-semibold text-gray-700">Type:  {product.type}</h3>
+            <h3 className="text-lg font-semibold text-gray-700">Type:  {product.product_type}</h3>
 
             <p className="text-2xl text-gray-700 mt-3">
               {product.price}
