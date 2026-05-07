@@ -17,7 +17,7 @@ export default function ProductView() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then(res => res.json())
       .then(data => {
         setProduct(data);

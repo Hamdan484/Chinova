@@ -6,7 +6,7 @@ export default function Example() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/products')
+    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => {
         setAvProducts(data);
@@ -26,7 +26,7 @@ export default function Example() {
         <h2 className="text-2xl font-bold text-gray-900">Oops! Our Menu is Empty</h2>
         <p className="mt-2 text-gray-600">Please make sure the Backend Server is running and the database is seeded.</p>
         <div className="mt-6 flex flex-col gap-2 items-center text-sm text-gray-500">
-          <p>1. Open terminal -> <code>cd server</code></p>
+          <p>1. Open terminal -&gt; <code>cd server</code></p>
           <p>2. Run <code>node seed.js</code> (once)</p>
           <p>3. Run <code>npm run dev</code></p>
         </div>
