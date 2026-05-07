@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import staticData from "./data.jsx";
 
 export default function Example() {
   const [avProducts, setAvProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/products`)
+    const apiUrl = import.meta.env.VITE_API_URL;
+    if (!apiUrl || apiUrl.includes('your-railway-url')) {
+      // No backend configured — use static data immediately
+      setAvProducts(staticData);
+      setLoading(false);
+      return;
+    }
+    fetch(`${apiUrl}/api/products`)
       .then(res => res.json())
       .then(data => {
-        setAvProducts(data);
+        setAvProducts(data.length > 0 ? data : staticData);
         setLoading(false);
       })
-      .catch(err => {
-        console.error('Error fetching products:', err);
+      .catch(() => {
+        setAvProducts(staticData);
         setLoading(false);
       });
   }, []);

@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { CartContext } from "./Context/CartContext.jsx";
+import staticData from "./data.jsx";
 
 export default function ProductView() {
   const { id } = useParams();
@@ -17,14 +18,21 @@ export default function ProductView() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
+    const apiUrl = import.meta.env.VITE_API_URL;
+    if (!apiUrl || apiUrl.includes('your-railway-url')) {
+      const foundProduct = staticData.find(p => p.id === parseInt(id));
+      setProduct(foundProduct || null);
+      setLoading(false);
+      return;
+    }
+    fetch(`${apiUrl}/api/products/${id}`)
       .then(res => res.json())
       .then(data => {
-        setProduct(data);
+        setProduct(data.id ? data : staticData.find(p => p.id === parseInt(id)) || null);
         setLoading(false);
       })
-      .catch(err => {
-        console.error('Error fetching product:', err);
+      .catch(() => {
+        setProduct(staticData.find(p => p.id === parseInt(id)) || null);
         setLoading(false);
       });
   }, [id]);

@@ -9,8 +9,8 @@ const data = [
       "https://th.bing.com/th/id/OIP.SVCW9dzUWyC7pnL4bGUL9gHaEO?w=256&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
     imageAlt: "Front of men's Basic Tee in black.",
     price: "$4.00",
-    type:"Hot",
-    caffeine: "High"
+    product_type:"Hot",
+    caffeine_level: "High"
   },
   {
     id: 2,
@@ -20,8 +20,8 @@ const data = [
       "https://tse1.mm.bing.net/th/id/OIP.Qr2Qqi3qXLQ82hvFSQDYGwHaHK?rs=1&pid=ImgDetMain&o=7&rm=3",
     imageAlt: "Front of men's Basic Tee in white.",
     price: "$3.50",
-    type:"Hot",
-    caffeine: "Medium"
+    product_type:"Hot",
+    caffeine_level: "Medium"
   },
   {
     id: 3,
@@ -31,8 +31,8 @@ const data = [
       "https://th.bing.com/th/id/R.35385e2ff3a6a3a35239741ce4f78263?rik=WpkVNOU7I8gDnw&pid=ImgRaw&r=0",
     imageAlt: "Front of men's Basic Tee in dark gray.",
     price: "$5.50",
-    type:"Hot",
-    caffeine: "Medium"
+    product_type:"Hot",
+    caffeine_level: "Medium"
   },
   {
     id: 4,
@@ -43,8 +43,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$5.00",
-    type:"Iced",
-    caffeine: "High"
+    product_type:"Iced",
+    caffeine_level: "High"
   },
   {
     id: 15,
@@ -55,8 +55,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$5.00",
-    type:"Iced",
-    caffeine: "Low"
+    product_type:"Iced",
+    caffeine_level: "Low"
   },
   {
     id: 5,
@@ -67,8 +67,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$4.00",
-    type:"Iced",
-    caffeine: "Low"
+    product_type:"Iced",
+    caffeine_level: "Low"
   },
   {
     id: 6,
@@ -79,8 +79,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$5.00",
-    type:"Iced",
-    caffeine: "High"
+    product_type:"Iced",
+    caffeine_level: "High"
   },
   {
     id: 7,
@@ -91,8 +91,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$3.00",
-    type:"Hot",
-    caffeine: "Low"
+    product_type:"Hot",
+    caffeine_level: "Low"
   },
   {
     id: 8,
@@ -103,8 +103,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$6.00",
-    type:"Iced",
-    caffeine: "Medium"
+    product_type:"Iced",
+    caffeine_level: "Medium"
   },
   {
     id: 9,
@@ -115,8 +115,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$7.00",
-    type:"Hot",
-    caffeine: "Medium"
+    product_type:"Hot",
+    caffeine_level: "Medium"
   },
   {
     id: 10,
@@ -127,8 +127,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$2.00",
-    type:"Iced",
-    caffeine: "Low"
+    product_type:"Iced",
+    caffeine_level: "Low"
   },
   {
     id: 11,
@@ -139,8 +139,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$12.00",
-    type:"Iced",
-    caffeine: "Medium"
+    product_type:"Iced",
+    caffeine_level: "Medium"
   },
   {
     id: 12,
@@ -151,8 +151,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$34.00",
-    type:"Hot",
-    caffeine: "High"
+    product_type:"Hot",
+    caffeine_level: "High"
   },
   {
     id: 13,
@@ -163,8 +163,8 @@ const data = [
     imageAlt:
       "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
     price: "$7.00",
-    type:"Iced",
-    caffeine: "Medium"
+    product_type:"Iced",
+    caffeine_level: "Medium"
   },
 ];
 
